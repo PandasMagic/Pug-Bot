@@ -3,6 +3,6 @@ module.exports = {
   description: "Example Command",
   aliases: ["example"],
   execute(client, Discord, message, args) {
-    message.channel.send("Hi!")
+    message.channel.send("Hi!");
   }
 }
