@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const Embeds = require("../embeds/embeds.js")
+const Embeds = require("../embeds/Embeds.js")
 let emptyEmbed = [
     {
       "color": 0,
@@ -11,6 +11,9 @@ let emptyEmbed = [
       "fields": []
     }
   ]
+
+const maps = {"1️⃣": "Celarus", "2️⃣": "Sanctum", "3️⃣": "Bishop", "4️⃣": "Evasion", "5️⃣": "Fracture", "6️⃣": "Checkpoint"}
+
 module.exports = {
   name: "startgame",
   description: "Starts A game",
@@ -19,21 +22,48 @@ module.exports = {
     let currentMsg = await message.channel.send({
       embed: emptyEmbed
     });
-    let tmp = await pickPlayers(currentMsg)
+    let tmp = await pickPlayers(currentMsg, message)
     let leaders = tmp.leaders;
-    let players = tmp.players;
+    let players = tmp;
     if (players.length > 2){
       await pickTeams();
     }
-    let map = await voteMap();
-
+    let map = await voteMap(currentMsg, tmp);
+    currentMsg.edit(`**MAP**: **${map}**`)
 
 
   }
 }
-async function voteMap(){
-  return new Promise(async (resolve,reject) =>{
-
+async function voteMap(message, users){
+  return new Promise(async (resolve,reject) => {
+    let emojis = Object.keys(maps)
+    let mapNames = Object.values(maps) 
+    const voteMessage = await message.edit(`**MAP VOTE**\n${emojis[0]} - ${mapNames[0]}\n${emojis[1]} - ${mapNames[1]}\n${emojis[2]} - ${mapNames[2]}\n${emojis[3]} - ${mapNames[3]}\n${emojis[4]} - ${mapNames[4]}\n${emojis[5]} - ${mapNames[5]}`)
+    emojis.forEach(async (emoji) => { await voteMessage.react(emoji) })
+    const filter = (reaction, user) => {
+      return emojis.includes(reaction.emoji.name) && users.map(user => user.id).includes(user.id)
+    }
+    var collector = voteMessage.createReactionCollector(filter, { max: users.size })
+    const votes = {voters:[]}
+    mapNames.forEach(map => votes[map] = [])
+    collector.on('collect', (reaction, user) => {
+      if(votes.voters.includes(user.id)) Object.keys(votes).forEach(map => { if(votes[map].includes(user.id)) votes[map] = votes[map].filter(it => it != user.id) })
+      votes[maps[reaction.emoji.name]].push(user.id)
+      votes.voters.push(user.id)
+      reaction.users.remove(user.id)
+      if(votes.voters.length == users.length) collector.stop()
+    })
+    collector.on('end', collected => {
+      const voteRes = new Discord.Collection()
+      for (var key in votes) {
+        if(key != 'voters') {
+          voteRes.set(key, votes[key].length)
+        }
+      }
+      voteRes.sort((a, b) => b - a)
+      message.reactions.removeAll()
+      resolve(voteRes.firstKey())
+    })
   })
 }
 async function pickTeams(){
@@ -41,7 +71,7 @@ async function pickTeams(){
 
   })
 }
-async function pickPlayers(currentMsg){
+async function pickPlayers(currentMsg, message){
   return new Promise(async (resolve, reject) => {
     let linkplayerEmbed = new Embeds.LinkPlayerEmbed();
     await currentMsg.edit({
@@ -58,7 +88,7 @@ async function pickPlayers(currentMsg){
       dispose: true
     });
     const startPicking = currentMsg.createReactionCollector((reaction, user) => {
-      return ['➡️'].includes(reaction.emoji.name) && user == currentMsg.author
+      return ['➡️'].includes(reaction.emoji.name) && user.id == message.author.id
     }, {
       dispose: true
     });
