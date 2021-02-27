@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const Embeds = require("../embeds/embeds.js")
+const Evio = require("../secret/evio.js")
 let emptyEmbed = [
     {
       "color": 0,
@@ -19,13 +20,22 @@ module.exports = {
     let currentMsg = await message.channel.send({
       embed: emptyEmbed
     });
+    console.log(args)
     let tmp = await pickPlayers(currentMsg)
     let leaders = tmp.leaders;
     let players = tmp.players;
-    if (players.length > 2){
-      await pickTeams();
-    }
-    let map = await voteMap();
+    message.channel.send("Leaders " + leaders)
+    let evclient = new Evio.EvioClient();
+    let options = new Evio.GameOptions();
+
+    options.mapId = parseInt(args[1])
+    let joinlink = await evclient.startNewPrivateGame(options);
+    message.channel.send(joinlink)
+
+    // if (players.length > 2){
+    //   await pickTeams();
+    // }
+    // let map = await voteMap();
 
 
 
@@ -58,7 +68,7 @@ async function pickPlayers(currentMsg){
       dispose: true
     });
     const startPicking = currentMsg.createReactionCollector((reaction, user) => {
-      return ['➡️'].includes(reaction.emoji.name) && user == currentMsg.author
+      return ['➡️'].includes(reaction.emoji.name)
     }, {
       dispose: true
     });
@@ -78,13 +88,15 @@ async function pickPlayers(currentMsg){
 
     startPicking.on('collect', async collected => {
       if (linkplayerEmbed.users.length >= 2) {
-        console.log("Picking Team Leaders." + sample(linkplayerEmbed.users, 2))
-        await currentMsg.reactions.removeAll()
+        console.log("Picking Team Leaders." + sample(linkplayerEmbed.users, 2));
+        await currentMsg.reactions.removeAll();
         let out = {
           players: linkplayerEmbed.users,
           teamleaders: sample(linkplayerEmbed.users, 2)
         }
-        resolve(linkplayerEmbed.users)
+        startPicking.stop();
+        getplayercollector.stop();
+        resolve(linkplayerEmbed.users);
       }
     });
   });

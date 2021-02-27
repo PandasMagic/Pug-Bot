@@ -24,6 +24,14 @@ client.on('message', (message) => {
   if(!message.content.startsWith(prefix) && !message.author.bot) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const command = client.commands.get(args[0]) || client.commands.find(cmd => cmd.aliases && cmd.aliases.find(alias => alias.toLowerCase() == args[0].toLowerCase()));
+  // console.log(command) //TODO add help Command
+  // if(command == "help"){
+  //   doHelp(client,commands,message,args)
+  // }
   if(!command) return;
-  command.execute(client, state, message, args);
+  command.execute(client,commands, message, args);
 });
+
+function doHelp(client,commands,message,args){
+  message.change.send("TODO:")
+}
