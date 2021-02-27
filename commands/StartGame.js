@@ -1,16 +1,50 @@
 const Discord = require('discord.js');
 const Embeds = require("../embeds/embeds.js")
-// const filter = (reaction, user) => {
-//   return ['✅', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
-// };
+let emptyEmbed = [
+    {
+      "color": 0,
+      "timestamp": "",
+      "author": {},
+      "image": {},
+      "thumbnail": {},
+      "footer": {},
+      "fields": []
+    }
+  ]
 module.exports = {
   name: "startgame",
   description: "Starts A game",
   aliases: [],
   async execute(client, state, message, args) {
-    let linkplayerEmbed = new Embeds.LinkPlayerEmbed();
-
     let currentMsg = await message.channel.send({
+      embed: emptyEmbed
+    });
+    let tmp = await pickPlayers(currentMsg)
+    let leaders = tmp.leaders;
+    let players = tmp.players;
+    if (players.length > 2){
+      await pickTeams();
+    }
+    let map = await voteMap();
+
+
+
+  }
+}
+async function voteMap(){
+  return new Promise(async (resolve,reject) =>{
+
+  })
+}
+async function pickTeams(){
+  return new Promise(async (resolve,reject) =>{
+
+  })
+}
+async function pickPlayers(currentMsg){
+  return new Promise(async (resolve, reject) => {
+    let linkplayerEmbed = new Embeds.LinkPlayerEmbed();
+    await currentMsg.edit({
       embed: linkplayerEmbed.embed
     })
     await currentMsg.react('✅');
@@ -24,7 +58,7 @@ module.exports = {
       dispose: true
     });
     const startPicking = currentMsg.createReactionCollector((reaction, user) => {
-      return ['➡️'].includes(reaction.emoji.name) && user == message.author
+      return ['➡️'].includes(reaction.emoji.name) && user == currentMsg.author
     }, {
       dispose: true
     });
@@ -46,13 +80,14 @@ module.exports = {
       if (linkplayerEmbed.users.length >= 2) {
         console.log("Picking Team Leaders." + sample(linkplayerEmbed.users, 2))
         await currentMsg.reactions.removeAll()
-        await message.channel.send("Picking Team Leaders." + sample(linkplayerEmbed.users, 2))
-
-        await message.channel.send("Leaders are  ")
+        let out = {
+          players: linkplayerEmbed.users,
+          teamleaders: sample(linkplayerEmbed.users, 2)
+        }
+        resolve(linkplayerEmbed.users)
       }
     });
-
-  }
+  });
 }
 
 function sample(arr, num = 1) {

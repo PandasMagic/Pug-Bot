@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const embeds = require('./embeds/Embeds.js')
 const client = new Discord.Client();
-client.login();
+client.login("ODE0NTUxMDA2OTMwNzk2NTU0.YDffvQ.K0Sb43NwalL_yN2zsa3CtFUXpdI");
 const fs = require('fs');
 class GameState {
   constructor(){
