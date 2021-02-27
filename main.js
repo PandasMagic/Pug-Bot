@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
 const embeds = require('./embeds/Embeds.js')
 const client = new Discord.Client();
-client.login("ODE0NTUxMDA2OTMwNzk2NTU0.YDffvQ.K0Sb43NwalL_yN2zsa3CtFUXpdI");
-const fs = require('fs');
+const fs = require("fs");
+const tokendata = fs.readFileSync('./secret/token.txt', 'utf8')
+client.login(tokendata.trim());
 class GameState {
   constructor(){
     this.gameStarted = false;
