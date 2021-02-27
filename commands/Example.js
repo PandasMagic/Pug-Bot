@@ -1,8 +1,9 @@
+const Discord = require('discord.js');
 module.exports = {
-  name: "test",
+  name: "here",
   description: "Example Command",
   aliases: ["example"],
-  execute(client, Discord, message, args) {
-    message.channel.send("Hi!")
+  execute(client, state, message, args) {
+    message.channel.send("matches");
   }
 }
