@@ -17,7 +17,7 @@ const maps = {"1️⃣": "Celarus", "2️⃣": "Sanctum", "3️⃣": "Bishop", "
 
 module.exports = {
   name: "startgame",
-  description: "Starts A game",
+  description: "Starts an ev.io Game",
   aliases: [],
   async execute(client, state, message, args) {
     let currentMsg = await message.channel.send({
