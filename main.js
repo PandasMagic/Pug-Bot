@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const embeds = require('./embeds/Embeds.js')
+const Evio = require("./secret/evio.js")
 const client = new Discord.Client();
 const fs = require("fs");
 const tokendata = fs.readFileSync('./secret/token.txt', 'utf8')
@@ -27,3 +28,15 @@ client.on('message', (message) => {
   if (!command) return;
   command.execute(client, state, message, args);
 });
+
+async function testasdf(){
+
+  // let search = new RegExp(/buildIdentifier[:]\'(.*?)\'/mg)
+  // console.log(scriptrequest.data)
+  // console.log();
+  let evclient = new Evio.EvioClient();
+  let options = new Evio.GameOptions();
+  options.mapId = Evio.mapidmap["rook"];
+  let joinlink = await evclient.startNewPrivateGame(options);
+}
+testasdf();
