@@ -9,6 +9,7 @@
   "author": "PandasMagic and m10653",
   "license": "ISC",
   "dependencies": {
+    "ascii-table": "0.0.9",
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "lodash.clonedeep": "^4.5.0",
