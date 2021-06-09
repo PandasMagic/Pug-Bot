@@ -20,16 +20,35 @@ module.exports = {
       embed: emptyEmbed
     });
 
-    let tmp = await pickPlayers(currentMsg, message)
-    let map = await voteMap(currentMsg, tmp);
-    currentMsg.edit(`**MAP**: **${map}**`)
-    let evclient = new Evio.EvioClient();
-    let options = new Evio.GameOptions();
-    console.log(map.split(" ")[1].replace(":",""))
-    console.log(Evio.mapidmap[map.split(" ")[1].replace(":","")])
-    options.mapId = Evio.mapidmap[map.split(" ")[1].replace(":","")];
-    let joinlink = await evclient.startNewPrivateGame(options);
-    message.channel.send(joinlink)
+    // let tmp = await pickPlayers(currentMsg, message)
+    // let map = await voteMap(currentMsg, tmp);
+    // currentMsg.edit(`**MAP**: **${map}**`)
+    // let evclient = new Evio.EvioClient();
+    // let options = new Evio.GameOptions();
+    // options.mapId = 131;
+    // // console.log(map.split(" ")[1].replace(":",""))
+    // // console.log(Evio.mapidmap[map.split(" ")[1].replace(":","")])
+    // // options.mapId = Evio.mapidmap[map.split(" ")[1].replace(":","")];
+    // options.playerCount = 16;
+    // let joinlink = await evclient.startNewPrivateGame(options);
+
+
+    // partycon.join(evclient)
+    // message.channel.send(joinlink)
+    var x = 0;
+    var intervalID = setInterval(function() {
+
+      let ev2 = new Evio.EvioClient();
+      ev2.joinGamelink("https://ev.io/?game=8bc6382a-360d-438f-be99-9788bdcdc92f");
+      if (++x === 2) {
+        clearInterval(intervalID);
+      }
+    }, 1000);
+    // for(let i = 0; i < options.playerCount-3; i ++){
+    // let ev2 = new Evio.EvioClient();
+    // ev2.joinGamelink(joinlink);
+    // }
+
   }
 }
 async function voteMap(message, users) {

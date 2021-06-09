@@ -21,7 +21,15 @@ module.exports = {
     });
 
     // let tmp = await pickPlayers(currentMsg, message)
-    let map = await voteMap(currentMsg, state.users);
+    let players = []
+    if(args.length == 0){
+      players = await pickPlayers(currentMsg, message)
+    }else{
+      players = args[0]
+    }
+    console.log("Trigger")
+    // console.log(tmp)
+    let map = await voteMap(currentMsg, players);
     currentMsg.edit(`**MAP**: **${map}**`)
     let evclient = new Evio.EvioClient();
     let options = new Evio.GameOptions();
