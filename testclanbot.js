@@ -205,8 +205,9 @@ async function undeployDeploy(username) {
         await deploy(deployed, cookie, out['build_id'], out['form_token']);
         fs.writeFileSync("DeployedPlayers.json", JSON.stringify(deployed))
     } else {
-        delete deployed[toRemove.playerName]; //Check if member was removed or not later
+        // delete deployed[toRemove.playerName]; //Check if member was removed or not later
         console.log("Member not found!")
+        return;
     }
 
     // let deployed = {}
