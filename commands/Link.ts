@@ -7,11 +7,11 @@ import LocalClanState from "../util/LocalClanState";
 
 class LinkCommand implements Command {
   name = "link";
-  description = "Link your Ev account to discord";
+  description = "Link your Ev account to discord (WIP)";
   aliases = ["verify"];
   execute(client: Client, state: BotState, message: Message, args: string[]): void {
     message.channel.send("Link request detected. Check your Dm's");
-    let t = new PartyConnection("428ba269-dfd1-4ea6-8b7d-351ac2aa02ac","Li<img src=\"image.gif\" onclick=''>")
+    // let t = new PartyConnection("428ba269-dfd1-4ea6-8b7d-351ac2aa02ac","Li<img src=\"image.gif\" onclick=''>")
   }
 
 }

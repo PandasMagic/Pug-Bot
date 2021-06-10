@@ -8,13 +8,7 @@ class DeployCommand implements Command {
   name = "deploy";
   description = "deploy yourself";
   aliases = ["d"];
-  clanState = new LocalClanState('clanstate.json');
-  clanClient = new ClanApiClient();
   constructor() {
-    this.init();
-  }
-  async init() {
-    this.clanClient.login('PandaMoment', '&FcAhq255$YBXGp6z5g6');
   }
   async execute(client: Client, state: BotState, message: Message, args: string[]): Promise<void> {
     
@@ -24,10 +18,10 @@ class DeployCommand implements Command {
     }
     let targetUser = message.content.substr(message.content.indexOf(' ') + 1);
 
-    let clandata = await this.clanClient.getClanData('2');
-    this.clanState.update(clandata);
+    let clandata = await state.clanClient.getClanData('2');
+    state.clanState.update(clandata);
 
-    let targetMember = this.clanState.clanData.members.find((elem)=>{return elem.name.toLocaleLowerCase() == targetUser.toLocaleLowerCase()});
+    let targetMember = state.clanState.clanData.members.find((elem)=>{return elem.name.toLocaleLowerCase() == targetUser.toLocaleLowerCase()});
     if(!targetMember){
       message.channel.send("Unable to find Member: " + targetUser);
       return;
@@ -35,23 +29,25 @@ class DeployCommand implements Command {
     if(targetMember.deployed){
       message.channel.send(targetUser + " is already Deployed. Refreshing Deployment Status");
       targetMember.lastDeployed = Date.now();
-      this.clanState.save()
+      state.clanState.save()
       return;
     }
 
+    
+    let toUndeploy = this.getPlayerToUndeploy(state.clanState.clanData.members)
     targetMember.deployed = true;
-    let toUndeploy = this.getPlayerToUndeploy(this.clanState.clanData.members)
+    targetMember.lastDeployed = Date.now()
     if(toUndeploy){
       toUndeploy.deployed = false;
     }
-    this.clanClient.updateClanStatus(this.clanState.generateClanStatus());
+    state.clanClient.updateClanStatus(state.clanState.generateClanStatus());
     let msg = "Deployed: " + targetMember.name;
     if(toUndeploy){
       msg+= "\nUndeploying: " + toUndeploy.name;
     }
     msg+= "\nMake sure to refresh your game to start earning CP. (just waiting untill a new game does not update it)";
     message.channel.send(msg);
-    this.clanState.save()
+    state.clanState.save()
 
 
   }

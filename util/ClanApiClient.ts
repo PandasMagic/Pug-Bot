@@ -52,6 +52,10 @@ class ClanApiClient {
         
        
     }
+    async getPlayerStats(name:string){
+        let out = await axios.get('https://ev.io/stats-by-un/' + encodeURIComponent(name), Default_OPTIONS())
+        return JSON.parse(out.data);
+    }
     async getClanData(gid: string): Promise<ClanStatus> {
         this.checkLoggedIn();
         let options = Default_OPTIONS()

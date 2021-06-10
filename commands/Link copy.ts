@@ -6,7 +6,7 @@ import LocalClanState from "../util/LocalClanState";
 
 class testCommand implements Command {
   name = "test";
-  description = "Link your Ev account to discord";
+  description = "debug Command (WIP)";
   aliases = ["t"];
   execute(client: Client, state: BotState, message: Message, args: string[]): void {
     message.channel.send("Link request detected. Check your Dm's");

@@ -37,7 +37,14 @@ class LocalClanState {
             }
         }
     }
-    getDeployedMembers() {
+    getDeployedMembers() : LocalMemberData[]{
+        let deployed = []
+        for (let mem of this.clanData.members) {
+            if (mem.deployed) {
+                deployed.push(mem);
+            }
+        }
+        return deployed;
 
     }
     update(clanstatus: ClanStatus) {
@@ -105,4 +112,4 @@ class LocalClanState {
 
 }
 export default LocalClanState;
-export type {LocalMemberData}
+export type { LocalMemberData }
