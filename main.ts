@@ -2,7 +2,7 @@ import Discord from 'discord.js'
 import BotState from './BotState'
 import Command from './command'
 import fs from 'fs';
-import LocalClanState from './util/LocalClanState';
+import LocalClanState, { LocalMemberData } from './util/LocalClanState';
 import ClanApiClient from './util/ClanApiClient';
 import { inherits } from 'util';
 
@@ -29,39 +29,74 @@ async function init() {
   autoDeploy();
   setInterval(() => {
     autoDeploy();
-  }, 1000 * 60 * 5);
+  }, 1000 * 60 * 4);
 }
 
 
 async function autoDeploy() {
   console.log("autoDeploy")
   state.clanState.update(await state.clanClient.getClanData('2'));
-  
-  for(let m of state.clanState.clanData.members){
+
+  for (let m of state.clanState.clanData.members) {
     let stats = await ClanApiClient.getPlayerStats(m.name);
     let weeklyscore = stats['field_weekly_score'][0]['value'];
-    if(m.weeklyScore != weeklyscore){
-      console.log("Score Change Detected for:" + m.name + " : +" + (weeklyscore-m.weeklyScore));
+    if (m.weeklyScore != weeklyscore) {
+      console.log("Score Change Detected for:" + m.name + " : +" + (weeklyscore - m.weeklyScore));
       m.lastPointUpdated = Date.now();
+      m.lastDeployed = Date.now();
+      if (!m.deployed) {
+        // state.clanClient.updateClanStatus(this.st)
+        let toUndeploy = getPlayerToUndeploy(state.clanState.clanData.members);
+        m.deployed = true;
+        if (toUndeploy) {
+          toUndeploy.deployed = false;
+        }
+        state.clanClient.updateClanStatus(state.clanState.generateClanStatus());
+        let msg = "Deployed: " + m.name;
+        if (toUndeploy) {
+          msg += "\nUndeploying: " + toUndeploy.name;
+        }
+        msg += "\nMake sure to refresh your game to start earning CP. (just waiting untill a new game does not update it)";
+        console.log(msg)
+      }
     }
     m.weeklyScore = weeklyscore;
   }
   state.clanState.save();
 
   console.log("The Following users who active in the past 11 min");
-  for(let m of state.clanState.clanData.members){
-    
-    let last11min = (Date.now() - 1000*60*11);
+  for (let m of state.clanState.clanData.members) {
+
+    let last11min = (Date.now() - 1000 * 60 * 11);
     // console.log(m.lastPointUpdated)
     // console.log(last11min)
-    if(m.lastPointUpdated > last11min){
+    if (m.lastPointUpdated > last11min) {
       console.log(m.name + ": " + m.deployed);
     }
   }
-  
+
   // state.clanClient.getPlayerStats())
 }
+function getPlayerToUndeploy(members: LocalMemberData[]): LocalMemberData {
 
+  let deployedList = []
+  for (let mem of members) {
+    if (mem.deployed) {
+      deployedList.push(mem);
+    }
+  }
+  if (deployedList.length < 20) {
+    return;
+  }
+  let longestDeployed = deployedList[0];
+  // console.log(deployedList)
+  for (let mem of deployedList) {
+    if (longestDeployed.lastDeployed > mem.lastDeployed && mem.deployed) { //Bug if 
+      longestDeployed = mem;
+    }
+  }
+  return longestDeployed;
+}
 
 client.on('message', async (message) => {
   if (!message.content.startsWith(state.prefix)) {

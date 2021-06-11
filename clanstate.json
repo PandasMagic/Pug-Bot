@@ -8,19 +8,19 @@
       "id": "6178",
       "name": "M10653",
       "deployed": true,
-      "weeklyScore": 254170,
+      "weeklyScore": 289785,
       "cpPoints": -1,
-      "lastDeployed": 1623375018016,
-      "lastPointUpdated": 1623376035828
+      "lastDeployed": 1623388629264,
+      "lastPointUpdated": 1623388629264
     },
     {
       "id": "66721",
       "name": "SillyAW",
       "deployed": true,
-      "weeklyScore": 419300,
+      "weeklyScore": 432330,
       "cpPoints": -1,
       "lastDeployed": 1623362265807,
-      "lastPointUpdated": 1623377235958
+      "lastPointUpdated": 1623378135916
     },
     {
       "id": "15103",
@@ -124,10 +124,10 @@
     {
       "id": "78502",
       "name": "buu",
-      "deployed": false,
+      "deployed": true,
       "weeklyScore": 238375,
       "cpPoints": -1,
-      "lastDeployed": 0,
+      "lastDeployed": 1623388516023,
       "lastPointUpdated": 1623369215444
     },
     {
@@ -143,10 +143,10 @@
       "id": "65105",
       "name": "MrPizzaMan",
       "deployed": true,
-      "weeklyScore": 519325,
+      "weeklyScore": 537485,
       "cpPoints": -1,
-      "lastDeployed": 1623375004566,
-      "lastPointUpdated": 1623375737581
+      "lastDeployed": 1623381536352,
+      "lastPointUpdated": 1623383237925
     },
     {
       "id": "83851",
@@ -161,10 +161,10 @@
       "id": "61097",
       "name": "tinyfruit",
       "deployed": true,
-      "weeklyScore": 465740,
+      "weeklyScore": 481645,
       "cpPoints": -1,
       "lastDeployed": 1623371842546,
-      "lastPointUpdated": 1623376937985
+      "lastPointUpdated": 1623380537964
     },
     {
       "id": "67941",
@@ -376,7 +376,7 @@
     {
       "id": "91860",
       "name": "Kasamitama",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 906800,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -386,15 +386,15 @@
       "id": "98712",
       "name": "jewisjewislol",
       "deployed": true,
-      "weeklyScore": 58405,
+      "weeklyScore": 66930,
       "cpPoints": -1,
       "lastDeployed": 1623367017007,
-      "lastPointUpdated": 1623374842508
+      "lastPointUpdated": 1623379641377
     },
     {
       "id": "95",
       "name": "Rafael",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 161320,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -404,15 +404,15 @@
       "id": "121117",
       "name": "TheDivineLOrd",
       "deployed": true,
-      "weeklyScore": 212635,
+      "weeklyScore": 213870,
       "cpPoints": -1,
-      "lastDeployed": 0,
-      "lastPointUpdated": 1623369219206
+      "lastDeployed": 1623387467572,
+      "lastPointUpdated": 1623388045359
     },
     {
       "id": "125267",
       "name": "alphastrike",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 72665,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -421,7 +421,7 @@
     {
       "id": "130721",
       "name": "Invader",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 224485,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -430,7 +430,7 @@
     {
       "id": "64101",
       "name": "Rell.io",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 145875,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -449,10 +449,10 @@
       "id": "76435",
       "name": "Pr0teusCore",
       "deployed": true,
-      "weeklyScore": 119740,
+      "weeklyScore": 122465,
       "cpPoints": -1,
       "lastDeployed": 1623367545526,
-      "lastPointUpdated": 1623371609808
+      "lastPointUpdated": 1623379041599
     },
     {
       "id": "104154",
@@ -493,11 +493,11 @@
     {
       "id": "122083",
       "name": "Artistic Aarush",
-      "deployed": false,
-      "weeklyScore": 82885,
+      "deployed": true,
+      "weeklyScore": 84525,
       "cpPoints": -1,
-      "lastDeployed": 0,
-      "lastPointUpdated": 1623370307451
+      "lastDeployed": 1623388842787,
+      "lastPointUpdated": 1623388842787
     },
     {
       "id": "108134",
@@ -691,11 +691,11 @@
     {
       "id": "71875",
       "name": "Vegankid",
-      "deployed": false,
-      "weeklyScore": 309250,
+      "deployed": true,
+      "weeklyScore": 312020,
       "cpPoints": -1,
-      "lastDeployed": 0,
-      "lastPointUpdated": 1623371510121
+      "lastDeployed": 1623378170864,
+      "lastPointUpdated": 1623378748275
     },
     {
       "id": "123129",
@@ -737,10 +737,37 @@
       "id": "77177",
       "name": "deathwish",
       "deployed": true,
-      "weeklyScore": 267395,
+      "weeklyScore": 276000,
       "cpPoints": -1,
       "lastDeployed": 1623373843708,
+      "lastPointUpdated": 1623382046227
+    },
+    {
+      "id": "131361",
+      "name": "Technot",
+      "deployed": false,
+      "weeklyScore": 26075,
+      "cpPoints": -1,
+      "lastDeployed": 0,
       "lastPointUpdated": 0
+    },
+    {
+      "id": "19233",
+      "name": "EndermanWiggin",
+      "deployed": true,
+      "weeklyScore": 92645,
+      "cpPoints": -1,
+      "lastDeployed": 1623385328144,
+      "lastPointUpdated": 1623387449357
+    },
+    {
+      "id": "133165",
+      "name": "𝐛𝐫𝐚𝐭",
+      "deployed": true,
+      "weeklyScore": 19140,
+      "cpPoints": -1,
+      "lastDeployed": 1623388342598,
+      "lastPointUpdated": 1623388342598
     }
   ]
 }
