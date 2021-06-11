@@ -47,7 +47,7 @@ class LocalClanState {
         return deployed;
 
     }
-    update(clanstatus: ClanStatus) {
+    async update(clanstatus: ClanStatus) {
         this.clanData.name = clanstatus.name;
         this.clanData.fid = clanstatus.fid;
         this.clanData.motto = clanstatus.motto;
@@ -55,11 +55,16 @@ class LocalClanState {
         for (let member of clanstatus.members) {
             let localmem = this.clanData.members.find((elem) => { return elem.id == member.id })
             if (!localmem) { //Create new local Mem
+                console.log("PlayerName")
+                console.log(member.playerName)
+                let stats = await ClanApiClient.getPlayerStats(member.playerName);
+                // console.log(stats)
+                let weeklyscore = stats['field_weekly_score'][0]['value'];
                 this.clanData.members.push({
                     id: member.id,
                     name: member.playerName,
                     deployed: member.deployed,
-                    weeklyScore: -1,
+                    weeklyScore: weeklyscore,
                     cpPoints: -1,
                     lastDeployed: 0,
                     lastPointUpdated: 0.

@@ -52,9 +52,9 @@ class ClanApiClient {
         
        
     }
-    async getPlayerStats(name:string){
+    static async getPlayerStats(name:string){
         let out = await axios.get('https://ev.io/stats-by-un/' + encodeURIComponent(name), Default_OPTIONS())
-        return JSON.parse(out.data);
+        return out.data[0];
     }
     async getClanData(gid: string): Promise<ClanStatus> {
         this.checkLoggedIn();
@@ -123,7 +123,7 @@ class ClanApiClient {
             }
         }
         let out = await axios.post('https://ev.io/group/2/edit', querystring.encode(data), options)
-        console.log(out);
+        // console.log(out);
         return;
     }
     private checkLoggedIn(){
