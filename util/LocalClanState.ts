@@ -59,6 +59,7 @@ class LocalClanState {
                 console.log(member.playerName)
                 let stats = await ClanApiClient.getPlayerStats(member.playerName);
                 // console.log(stats)
+                //https://ev.io/user/19945?_format=json
                 let weeklyscore = stats['field_weekly_score'][0]['value'];
                 this.clanData.members.push({
                     id: member.id,

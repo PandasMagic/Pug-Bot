@@ -41,7 +41,7 @@ async function autoDeploy() {
     let stats = await ClanApiClient.getPlayerStats(m.name);
     let weeklyscore = stats['field_weekly_score'][0]['value'];
     if(m.weeklyScore != weeklyscore){
-      console.log("Score Change Detected for:" + m.name);
+      console.log("Score Change Detected for:" + m.name + " : +" + (weeklyscore-m.weeklyScore));
       m.lastPointUpdated = Date.now();
     }
     m.weeklyScore = weeklyscore;

@@ -8,19 +8,19 @@
       "id": "6178",
       "name": "M10653",
       "deployed": true,
-      "weeklyScore": 227580,
+      "weeklyScore": 254170,
       "cpPoints": -1,
-      "lastDeployed": 1623366015208,
-      "lastPointUpdated": 1623371596177
+      "lastDeployed": 1623375018016,
+      "lastPointUpdated": 1623376035828
     },
     {
       "id": "66721",
       "name": "SillyAW",
       "deployed": true,
-      "weeklyScore": 354945,
+      "weeklyScore": 419300,
       "cpPoints": -1,
       "lastDeployed": 1623362265807,
-      "lastPointUpdated": 1623372095275
+      "lastPointUpdated": 1623377235958
     },
     {
       "id": "15103",
@@ -62,10 +62,10 @@
       "id": "23431",
       "name": "temo",
       "deployed": true,
-      "weeklyScore": 274660,
+      "weeklyScore": 289290,
       "cpPoints": -1,
       "lastDeployed": 1623369925536,
-      "lastPointUpdated": 1623372095929
+      "lastPointUpdated": 1623376336247
     },
     {
       "id": "62222",
@@ -142,11 +142,11 @@
     {
       "id": "65105",
       "name": "MrPizzaMan",
-      "deployed": false,
-      "weeklyScore": 489815,
+      "deployed": true,
+      "weeklyScore": 519325,
       "cpPoints": -1,
-      "lastDeployed": 0,
-      "lastPointUpdated": 1623372097133
+      "lastDeployed": 1623375004566,
+      "lastPointUpdated": 1623375737581
     },
     {
       "id": "83851",
@@ -161,10 +161,10 @@
       "id": "61097",
       "name": "tinyfruit",
       "deployed": true,
-      "weeklyScore": 418125,
+      "weeklyScore": 465740,
       "cpPoints": -1,
       "lastDeployed": 1623371842546,
-      "lastPointUpdated": 1623371676799
+      "lastPointUpdated": 1623376937985
     },
     {
       "id": "67941",
@@ -178,10 +178,10 @@
     {
       "id": "64646",
       "name": "3XOJ",
-      "deployed": false,
+      "deployed": true,
       "weeklyScore": 44295,
       "cpPoints": -1,
-      "lastDeployed": 0,
+      "lastDeployed": 1623376346699,
       "lastPointUpdated": 1623369216203
     },
     {
@@ -286,7 +286,7 @@
     {
       "id": "49528",
       "name": "ALGUY",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 290030,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -316,13 +316,13 @@
       "deployed": true,
       "weeklyScore": 982955,
       "cpPoints": -1,
-      "lastDeployed": 0,
+      "lastDeployed": 1623373849063,
       "lastPointUpdated": 1623369218026
     },
     {
       "id": "121357",
       "name": "rockstar",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 230230,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -340,7 +340,7 @@
     {
       "id": "97003",
       "name": "魔41",
-      "deployed": true,
+      "deployed": false,
       "weeklyScore": 596445,
       "cpPoints": -1,
       "lastDeployed": 0,
@@ -350,10 +350,10 @@
       "id": "75088",
       "name": "51DEDOPPS",
       "deployed": true,
-      "weeklyScore": 1255895,
+      "weeklyScore": 1267005,
       "cpPoints": -1,
       "lastDeployed": 1623364060198,
-      "lastPointUpdated": 1623371504668
+      "lastPointUpdated": 1623374240753
     },
     {
       "id": "99005",
@@ -386,10 +386,10 @@
       "id": "98712",
       "name": "jewisjewislol",
       "deployed": true,
-      "weeklyScore": 54660,
+      "weeklyScore": 58405,
       "cpPoints": -1,
       "lastDeployed": 1623367017007,
-      "lastPointUpdated": 1623372100474
+      "lastPointUpdated": 1623374842508
     },
     {
       "id": "95",
@@ -674,10 +674,10 @@
       "id": "131598",
       "name": "Master__",
       "deployed": true,
-      "weeklyScore": 25020,
+      "weeklyScore": 30325,
       "cpPoints": -1,
       "lastDeployed": 1623371415746,
-      "lastPointUpdated": 1623372104246
+      "lastPointUpdated": 1623372769709
     },
     {
       "id": "132321",
@@ -732,6 +732,15 @@
       "cpPoints": -1,
       "lastDeployed": 0,
       "lastPointUpdated": 1623371510669
+    },
+    {
+      "id": "77177",
+      "name": "deathwish",
+      "deployed": true,
+      "weeklyScore": 267395,
+      "cpPoints": -1,
+      "lastDeployed": 1623373843708,
+      "lastPointUpdated": 0
     }
   ]
 }
