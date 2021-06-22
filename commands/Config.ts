@@ -7,8 +7,8 @@ class HelpCommand implements Command {
     name = "config";
     description = "list and set up configs";
     aliases = [];
-    required_permissions = [PermissionHelper.Permission.GUILD_ADMIN];
-    configKeys = ['prefix']
+    required_permissions = [PermissionHelper.Permission.BOT_ADMIN];
+    configKeys = ['prefix','clanid']
     execute(client: Client, state: BotState, serverState: ServerState, message: Message, args: string[]): void {
         if (args.length <= 1) {
             message.channel.send("Usage: config set <param> val\n config list");
@@ -38,6 +38,8 @@ class HelpCommand implements Command {
             }
             outString += '```'
             message.channel.send(outString);
+        }else{
+            message.channel.send("Usage: config set <param> val\n config list");
         }
     }
 

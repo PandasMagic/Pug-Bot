@@ -1,1 +1,20 @@
-{"guild":{"831538686663065606":{"prefix":".","clanstate":null}}}
+{
+    "guild": {
+        "831538686663065606": {
+            "prefix": ".",
+            "clanstate": null,
+            "clanid": "2",
+            "localClanState": {
+                "filePath": "LocalClanState.json",
+                "clanData": {
+                    "name": "PClan",
+                    "gid": "2",
+                    "fid": "2622",
+                    "motto": "PClient Gang (You must join our discord and post in applications to join)",
+                    "discord": "https://discord.gg/aGgkTSS3Dd",
+                    "members": []
+                }
+            }
+        }
+    }
+}

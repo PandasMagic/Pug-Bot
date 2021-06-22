@@ -1,7 +1,9 @@
+import { getDiffieHellman } from 'crypto';
 import fs from 'fs'
 import ClanApiClient, { ClanStatus, MemberStatus } from './ClanApiClient';
 interface LocalClanData {
-    members: LocalMemberData[]
+    gid: string,
+    members: LocalMemberData[],
     name: string,
     fid: string,
     motto: string,
@@ -29,6 +31,7 @@ class LocalClanState {
 
         } else {
             this.clanData = {
+                gid: '2',
                 name: 'PClan',
                 fid: '2622',
                 motto: 'PClient Gang (You must join our discord and post in applications to join)',
@@ -94,6 +97,7 @@ class LocalClanState {
     }
     generateClanStatus(): ClanStatus {
         return {
+            gid: this.clanData.gid,
             name: this.clanData.name,
             fid: this.clanData.fid,
             motto: this.clanData.motto,

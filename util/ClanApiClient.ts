@@ -7,6 +7,7 @@ interface MemberStatus {
     deployed: boolean;
 }
 interface ClanStatus {
+    gid: string,
     name: string,
     fid: string,
     motto: string,
@@ -60,7 +61,7 @@ class ClanApiClient {
         this.checkLoggedIn();
         let options = Default_OPTIONS()
         options.headers['cookie'] = this.cookie;
-        let out = await axios.get('https://ev.io/group/2/edit', options)
+        let out = await axios.get('https://ev.io/group/' + gid + '/edit', options)
         if (out.status == 403) {
             throw new Error("Access Denied");
         }
@@ -71,6 +72,7 @@ class ClanApiClient {
         let discordLink = root.querySelector('#edit-field-discord-link-0-uri').getAttribute('value')
         let members: MemberStatus[] = [];
         let clanstatus: ClanStatus = {
+            gid: gid,
             name: clanName,
             fid: insignia_fid,
             motto: moto,
@@ -98,7 +100,7 @@ class ClanApiClient {
         this.checkLoggedIn();
         let options = Default_OPTIONS()
         options.headers['cookie'] = this.cookie;
-        let getFormid = await axios.get('https://ev.io/group/2/edit', options)
+        let getFormid = await axios.get('https://ev.io/group/' + status.gid + '/edit', options)
         let formhtml = parse(getFormid.data);
         if (getFormid.status == 403) {
             throw new Error("Access Denied");
@@ -122,7 +124,7 @@ class ClanApiClient {
                 data['field_deployed[' + mem.id + ']'] = mem.id;
             }
         }
-        let out = await axios.post('https://ev.io/group/2/edit', querystring.encode(data), options)
+        let out = await axios.post('https://ev.io/group/' + status.gid + '/edit', querystring.encode(data), options)
         // console.log(out);
         return;
     }

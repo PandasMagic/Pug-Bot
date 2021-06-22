@@ -15,12 +15,16 @@ import LocalClanState from './LocalClanState';
 interface ServerState {
     prefix: string;
     clanstate: LocalClanState;
+    clanid: string | null;
+    localClanState: LocalClanState;
 
 }
 function getDefaultServerState(): ServerState {
     return {
         prefix: '.',
-        clanstate: null
+        clanstate: null,
+        clanid: null,
+        localClanState: null
     }
 }
 // class ServerState

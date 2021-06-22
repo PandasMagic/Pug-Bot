@@ -1,14 +1,16 @@
 import { Client, Message } from "discord.js";
 import BotState from "../BotState";
 import Command from "../command";
-class HelpCommand implements Command {
+import { ServerState } from "../util/ServerState";
+class ListDeployed implements Command {
     name = "listDeployed";
     description = "Lists all deployed users (WIP)";
     aliases = ["ld"];
-    async execute(client: Client, state: BotState, message: Message, args: string[]): Promise<void> {
-        state.clanState.update(await state.clanClient.getClanData("2"))
-        state.clanState.save();
-        let deployed = state.clanState.getDeployedMembers();
+    required_permissions = [];
+    async execute(client: Client, state: BotState,serverState: ServerState, message: Message, args: string[]): Promise<void> {
+        serverState.clanstate.update(await state.clanClient.getClanData(serverState.clanstate.clanData.gid))
+        serverState.clanstate.save();
+        let deployed = serverState.clanstate.getDeployedMembers();
         let msg = "Deployed Members:\n";
         for(let m of deployed){
             msg += m.name + "\n";
@@ -25,4 +27,4 @@ class HelpCommand implements Command {
     }
 
 }
-export default (new HelpCommand())
+export default (new ListDeployed())
